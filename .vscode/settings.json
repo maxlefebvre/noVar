@@ -1,3 +1,15 @@
-// Place your settings in this file to overwrite default and user settings.
 {
+	// set to false to hide directory from the VS Code Document Sidebar
+	"files.exclude": {
+		"client/out/**/*": false,
+		"client/server/**/*": false,
+		"client/node_modules": false,
+		"server/node_modules": false
+	},
+	// set this to false to include "out" folder in search results
+	"search.exclude": {
+		"out": true
+	},
+	"typescript.tsdk": "./node_modules/typescript/lib",
+	"typescript.tsc.autoDetect": "off"
 }
