@@ -69,16 +69,16 @@ function validateTextDocument(textDocument: TextDocument): void {
 	let problems = 0;
 	for (var i = 0; i < lines.length && problems < maxNumberOfProblems; i++) {
 		let line = lines[i];
-		let index = line.indexOf('typescript');
+		let index = line.indexOf('var');
 		if (index >= 0) {
 			problems++;
 			diagnostics.push({
 				severity: DiagnosticSeverity.Warning,
 				range: {
 					start: { line: i, character: index },
-					end: { line: i, character: index + 10 }
+					end: { line: i, character: index + 3 }
 				},
-				message: `${line.substr(index, 10)} should be spelled TypeScript`,
+				message: `${line.substr(index, 3)} keyword detected: Consider using let or const.`,
 				source: 'ex'
 			});
 		}
@@ -94,36 +94,36 @@ connection.onDidChangeWatchedFiles((_change) => {
 
 
 // This handler provides the initial list of the completion items.
-connection.onCompletion((_textDocumentPosition: TextDocumentPositionParams): CompletionItem[] => {
-	// The pass parameter contains the position of the text document in
-	// which code complete got requested. For the example we ignore this
-	// info and always provide the same completion items.
-	return [
-		{
-			label: 'TypeScript',
-			kind: CompletionItemKind.Text,
-			data: 1
-		},
-		{
-			label: 'JavaScript',
-			kind: CompletionItemKind.Text,
-			data: 2
-		}
-	]
-});
+// connection.onCompletion((_textDocumentPosition: TextDocumentPositionParams): CompletionItem[] => {
+// 	// The pass parameter contains the position of the text document in
+// 	// which code complete got requested. For the example we ignore this
+// 	// info and always provide the same completion items.
+// 	return [
+// 		{
+// 			label: 'TypeScript',
+// 			kind: CompletionItemKind.Text,
+// 			data: 1
+// 		},
+// 		{
+// 			label: 'JavaScript',
+// 			kind: CompletionItemKind.Text,
+// 			data: 2
+// 		}
+// 	]
+// });
 
 // This handler resolve additional information for the item selected in
 // the completion list.
-connection.onCompletionResolve((item: CompletionItem): CompletionItem => {
-	if (item.data === 1) {
-		item.detail = 'TypeScript details',
-			item.documentation = 'TypeScript documentation'
-	} else if (item.data === 2) {
-		item.detail = 'JavaScript details',
-			item.documentation = 'JavaScript documentation'
-	}
-	return item;
-});
+// connection.onCompletionResolve((item: CompletionItem): CompletionItem => {
+// 	if (item.data === 1) {
+// 		item.detail = 'TypeScript details',
+// 			item.documentation = 'TypeScript documentation'
+// 	} else if (item.data === 2) {
+// 		item.detail = 'JavaScript details',
+// 			item.documentation = 'JavaScript documentation'
+// 	}
+// 	return item;
+// });
 
 /*
 connection.onDidOpenTextDocument((params) => {

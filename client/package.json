@@ -16,7 +16,7 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onLanguage:plaintext"
+		"onLanguage:javascript"
 	],
 	"main": "./out/src/extension",
 	"contributes": {
