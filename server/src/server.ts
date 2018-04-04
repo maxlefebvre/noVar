@@ -27,6 +27,8 @@ connection.onInitialize((_params): InitializeResult => {
 		capabilities: {
 			// Tell the client that the server works in FULL text document sync mode
 			textDocumentSync: documents.syncKind,
+			// Tell the client that the server supports Code Actions
+			codeActionProvider: true,
 			// Tell the client that the server support code complete
 			completionProvider: {
 				resolveProvider: true
@@ -43,7 +45,7 @@ documents.onDidChangeContent((change) => {
 
 // The settings interface describe the server relevant settings part
 interface Settings {
-	lspSample: ExampleSettings;
+	novar: ExampleSettings;
 }
 
 // These are the example settings we defined in the client's package.json
@@ -58,7 +60,7 @@ let maxNumberOfProblems: number;
 // as well.
 connection.onDidChangeConfiguration((change) => {
 	let settings = <Settings>change.settings;
-	maxNumberOfProblems = settings.lspSample.maxNumberOfProblems || 100;
+	maxNumberOfProblems = settings.novar.maxNumberOfProblems || 100;
 	// Revalidate any open text documents
 	documents.all().forEach(validateTextDocument);
 });
