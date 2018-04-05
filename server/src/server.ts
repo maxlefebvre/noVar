@@ -81,7 +81,7 @@ function validateTextDocument(textDocument: TextDocument): void {
 					end: { line: i, character: index + 3 }
 				},
 				message: `${line.substr(index, 3)} keyword detected: Consider using let or const.`,
-				source: 'ex'
+				source: 'noVar'
 			});
 		}
 	}
