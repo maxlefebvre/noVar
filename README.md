@@ -11,6 +11,7 @@ For example if there is an image subfolder under your extension project workspac
 
 ## Roadmap
 
+* [x] Enable for typescript and coffeescript
 * [ ] Allow quick-fix suggestions that fix the warnings
 * [ ] Add warnings for using var vs let in for loops will a little info on its behaviour
 * [ ] Warnings for using this.x on the global object
