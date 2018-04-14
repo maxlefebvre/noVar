@@ -16,7 +16,9 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onLanguage:javascript"
+		"onLanguage:javascript",
+		"onLanguage:typescript",
+		"onLanguage:coffeescript"
 	],
 	"main": "./out/src/extension",
 	"contributes": {
